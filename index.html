@@ -1,351 +1,3312 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Difference Study Table</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difference Study Table</title>
 
-<style>
-    body {
-        font-family: 'Segoe UI', Roboto, sans-serif;
-        background-color: #f4f7fb;
-        margin: 0;
-        padding: 40px;
-        color: #2c3e50;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 30px;
-        color: #1a237e;
-    }
-
-    .print-btn-container {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .print-btn {
-        background-color: #1976d2;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .print-btn:hover {
-        background-color: #0d47a1;
-    }
-
-    .question-container {
-        margin-bottom: 50px;
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-        page-break-inside: avoid;
-    }
-
-    .question-title {
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: #0d47a1;
-        border-left: 6px solid #1976d2;
-        padding-left: 12px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 16px;
-    }
-
-    thead {
-        background-color: #e3f2fd;
-    }
-
-    th {
-        padding: 14px;
-        text-align: left;
-        font-weight: 700;
-        border-bottom: 2px solid #90caf9;
-        color: #0d47a1;
-    }
-
-    td {
-        padding: 12px;
-        border-bottom: 1px solid #e0e0e0;
-        vertical-align: top;
-        line-height: 1.6;
-    }
-
-    tr:hover {
-        background-color: #f1f8ff;
-    }
-
-
-    /* ===================== */
-    /* PRINT STYLING */
-    /* ===================== */
-
-    @media print {
-
+    <style>
         body {
-            background: white;
-            padding: 10px;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a237e;
         }
 
         .print-btn-container {
-            display: none;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .print-btn {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .print-btn:hover {
+            background-color: #0d47a1;
         }
 
         .question-container {
-            box-shadow: none;
-            border: 1px solid #ccc;
+            margin-bottom: 50px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             page-break-inside: avoid;
+        }
+
+        .question-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0d47a1;
+            border-left: 6px solid #1976d2;
+            padding-left: 12px;
         }
 
         table {
-            page-break-inside: auto;
-        }
-
-        tr {
-            page-break-inside: avoid;
-            page-break-after: auto;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
         }
 
         thead {
-            display: table-header-group;
+            background-color: #e3f2fd;
         }
 
-    }
+        th {
+            padding: 14px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid #90caf9;
+            color: #0d47a1;
+        }
 
-</style>
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        tr:hover {
+            background-color: #f1f8ff;
+        }
+
+
+        /* ===================== */
+        /* PRINT STYLING */
+        /* ===================== */
+
+        @media print {
+
+            body {
+                background: white;
+                padding: 10px;
+            }
+
+            .print-btn-container {
+                display: none;
+            }
+
+            .question-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+
+            table {
+                page-break-inside: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Difference Based Study Tables</h1>
+    <h1>Difference Based Stud Tables</h1>
 
-<div class="print-btn-container">
-    <button class="print-btn" onclick="printPage()">Print / Save as PDF</button>
-</div>
+    <div class="print-btn-container">
+        <button class="print-btn" onclick="printPage()">Print / Save as PDF</button>
+    </div>
 
-<div id="content"></div>
+    <div id="content"></div>
 
-<script>
+    <script>
 
-// =====================
-// PRINT FUNCTION
-// =====================
+        // =====================
+        // PRINT FUNCTION
+        // =====================
 
-function printPage() {
-    window.print();
-}
+        function printPage() {
+            window.print();
+        }
 
-// =====================
-// DATA STRUCTURE
-// =====================
+        // =====================
+        // DATA STRUCTURE
+        // =====================
 
-const questions = [
-    
-    
-{
-    questionName: "Differentiate between Hardware and Software",
-    headings: ["Basis", "Hardware", "Software"],
-    differences: [
-        [
-            "Definition",
-            "Physical <b>tangible components</b> of a computer system.",
-            "Set of <b>program instructions</b> that control hardware operations."
-        ],
-        [
-            "Nature",
-            "<b>Mechanical / electronic devices</b>.",
-            "<b>Logical and intangible</b> entities."
-        ],
-        [
-            "Dependency",
-            "Cannot function without <b>software control</b>.",
-            "Requires <b>hardware platform</b> for execution."
-        ],
-        [
-            "Failure Cause",
-            "Fails due to <b>physical damage</b> or wear.",
-            "Fails due to <b>bugs or logical errors</b>."
-        ],
-        [
-            "Examples",
-            "<b>CPU, keyboard, monitor, hard disk</b>.",
-            "<b>Operating system, compiler, application software</b>."
-        ]
-    ]
-},
+        const questions =
+            [
+                {
+                    questionName: "Differentiate between Hardware and Software",
+                    headings: ["Basis", "Hardware", "Software"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Physical <b>tangible components</b> of a computer system.",
+                            "Set of <b>program instructions</b> that control hardware operations."
+                        ],
+                        [
+                            "Nature",
+                            "<b>Mechanical / electronic devices</b>.",
+                            "<b>Logical and intangible</b> entities."
+                        ],
+                        [
+                            "Dependency",
+                            "Cannot function without <b>software control</b>.",
+                            "Requires <b>hardware platform</b> for execution."
+                        ],
+                        [
+                            "Failure Cause",
+                            "Fails due to <b>physical damage</b> or wear.",
+                            "Fails due to <b>bugs or logical errors</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>CPU, keyboard, monitor, hard disk</b>.",
+                            "<b>Operating system, compiler, application software</b>."
+                        ]
+                    ]
+                },
 
-{
-    questionName: "Differentiate between Primary Memory and Secondary Memory",
-    headings: ["Basis", "Primary Memory", "Secondary Memory"],
-    differences: [
-        [
-            "Definition",
-            "<b>Main memory</b> directly accessed by CPU.",
-            "<b>Auxiliary storage</b> used for permanent data storage."
-        ],
-        [
-            "Volatility",
-            Mostly <b>volatile</b> in nature.",
-            Generally <b>non-volatile</b>."
-        ],
-        [
-            "CPU Access",
-            Accessed through <b>memory bus</b>.",
-            Accessed via <b>I/O operations</b>."
-        ],
-        [
-            "Storage Capacity",
-            "<b>Limited capacity</b>.",
-            "<b>Large storage capacity</b>."
-        ],
-        [
-            "Examples",
-            "<b>RAM, Cache memory</b>.",
-            "<b>Hard disk, SSD, Optical disk</b>."
-        ]
-    ]
-},
+                {
+                    questionName: "Differentiate between Primary Memory and Secondary Memory",
+                    headings: ["Basis", "Primary Memory", "Secondary Memory"],
+                    differences: [
+                        [
+                            "Definition",
+                            "<b>Main memory</b> directly accessed by CPU.",
+                            "<b>Auxiliary storage</b> used for permanent data storage."
+                        ],
+                        [
+                            "Volatility",
+                            "Mostly <b>volatile</b> in nature.",
+                            "Generally <b>non-volatile</b>."
+                        ],
+                        [
+                            "CPU Access",
+                            "Accessed through <b>memory bus</b>.",
+                            "Accessed via <b>I/O operations</b>."
+                        ],
+                        [
+                            "Storage Capacity",
+                            "<b>Limited capacity</b>.",
+                            "<b>Large storage capacity</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>RAM, Cache memory</b>.",
+                            "<b>Hard disk, SSD, Optical disk</b>."
+                        ]
+                    ]
+                },
 
-{
-    questionName: "Differentiate between RAM and ROM",
-    headings: ["Basis", "RAM", "ROM"],
-    differences: [
-        [
-            "Full Form",
-            "<b>Random Access Memory</b>.",
-            "<b>Read Only Memory</b>."
-        ],
-        [
-            "Volatility",
-            "<b>Volatile memory</b>.",
-            "<b>Non-volatile memory</b>."
-        ],
-        [
-            "Data Modification",
-           " Supports <b>read and write operations</b>.",
-           " Supports <b>read-only operation</b> (limited writing)."
-        ],
-        [
-            "Purpose",
-            "Stores <b>temporary data and instructions</b>.",
-            "Stores <b>firmware / bootstrap program</b>."
-        ],
-        [
-            "Usage",
-            "Used as <b>working memory</b>.",
-            "Used for <b>permanent system instructions</b>."
-        ]
-    ]
-},
+                {
+                    questionName: "Differentiate between RAM and ROM",
+                    headings: ["Basis", "RAM", "ROM"],
+                    differences: [
+                        [
+                            "Full Form",
+                            "<b>Random Access Memory</b>.",
+                            "<b>Read Only Memory</b>."
+                        ],
+                        [
+                            "Volatility",
+                            "<b>Volatile memory</b>.",
+                            "<b>Non-volatile memory</b>."
+                        ],
+                        [
+                            "Data Modification",
+                            "Supports <b>read and write operations</b>.",
+                            "Primarily supports <b>read-only operation</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Stores <b>temporary data and instructions</b>.",
+                            "Stores <b>firmware / bootstrap program</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used as <b>working memory</b>.",
+                            "Used for <b>permanent system instructions</b>."
+                        ]
+                    ]
+                },
 
-{
-    questionName: "Differentiate between Static RAM (SRAM) and Dynamic RAM (DRAM)",
-    headings: ["Basis", "SRAM", "DRAM"],
-    differences: [
-        [
-            "Storage Mechanism",
-            "Uses <b>flip-flop circuits</b> to store data.",
-            "Uses <b>capacitor-based cells</b>."
-        ],
-        [
-            "Refreshing",
-            "Does <b>not require refreshing</b>.",
-            "Requires <b>periodic refreshing</b>."
-        ],
-        [
-            "Speed",
-           " Provides <b>low access time</b>.",
-            "Has <b>higher access time</b>."
-        ],
-        [
-            "Cost",
-            "<b>High cost per bit</b>.",
-            "<b>Lower cost per bit</b>."
-        ],
-        [
-            "Application",
-            "Used in <b>cache memory</b>.",
-            "Used in <b>main memory</b>."
-        ]
-    ]
-}
+                {
+                    questionName: "Differentiate between Static RAM (SRAM) and Dynamic RAM (DRAM)",
+                    headings: ["Basis", "SRAM", "DRAM"],
+                    differences: [
+                        [
+                            "Storage Mechanism",
+                            "Uses <b>flip-flop circuits</b> to store data.",
+                            "Uses <b>capacitor-based cells</b>."
+                        ],
+                        [
+                            "Refreshing",
+                            "Does <b>not require refreshing</b>.",
+                            "Requires <b>periodic refreshing</b>."
+                        ],
+                        [
+                            "Access Time",
+                            "Provides <b>low access time</b>.",
+                            "Has <b>higher access time</b>."
+                        ],
+                        [
+                            "Cost",
+                            "<b>High cost per bit</b>.",
+                            "<b>Lower cost per bit</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used in <b>cache memory</b>.",
+                            "Used in <b>main memory</b>."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Differentiate between Primary Cache and Secondary Cache",
+                    headings: ["Basis", "Primary Cache", "Secondary Cache"],
+                    differences: [
+                        [
+                            "Location",
+                            "Integrated <b>inside the CPU core</b>.",
+                            "Located <b>outside CPU core</b> but on processor chip or motherboard."
+                        ],
+                        [
+                            "Access Speed",
+                            "Provides <b>lowest access latency</b>.",
+                            "Has <b>higher latency</b> than primary cache."
+                        ],
+                        [
+                            "Capacity",
+                            "<b>Very small storage capacity</b>.",
+                            "<b>Larger capacity</b> than primary cache."
+                        ],
+                        [
+                            "Purpose",
+                            "Stores <b>most frequently accessed instructions</b>.",
+                            "Stores <b>recently accessed data</b>."
+                        ],
+                        [
+                            "Level Association",
+                            "Generally corresponds to <b>L1 cache</b>.",
+                            "Generally corresponds to <b>L2 cache</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between L1, L2 and L3 Cache",
+                    headings: ["Basis", "L1 Cache", "L2 Cache", "L3 Cache"],
+                    differences: [
+                        [
+                            "Location",
+                            "Embedded <b>within each CPU core</b>.",
+                            "Located <b>on CPU chip</b>, separate from core.",
+                            "Shared <b>among multiple cores</b>."
+                        ],
+                        [
+                            "Access Latency",
+                            "<b>Lowest latency</b>.",
+                            "<b>Moderate latency</b>.",
+                            "<b>Higher latency</b> than L1 and L2."
+                        ],
+                        [
+                            "Storage Capacity",
+                            "<b>Smallest capacity</b>.",
+                            "<b>Larger than L1</b>.",
+                            "<b>Largest among cache levels</b>."
+                        ],
+                        [
+                            "Core Sharing",
+                            "<b>Dedicated per core</b>.",
+                            "Usually <b>dedicated per core</b>.",
+                            "<b>Shared across cores</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Stores <b>critical instructions</b>.",
+                            "Stores <b>frequently used data</b>.",
+                            "Acts as <b>last-level cache buffer</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between DRAM and SDRAM",
+                    headings: ["Basis", "DRAM", "SDRAM"],
+                    differences: [
+                        [
+                            "Full Form",
+                            "<b>Dynamic Random Access Memory</b>.",
+                            "<b>Synchronous Dynamic Random Access Memory</b>."
+                        ],
+                        [
+                            "Synchronization",
+                            "Operates <b>asynchronously</b> with CPU clock.",
+                            "Operates <b>synchronized with system clock</b>."
+                        ],
+                        [
+                            "Performance",
+                            "Provides <b>standard data transfer rate</b>.",
+                            "Provides <b>improved data throughput</b>."
+                        ],
+                        [
+                            "Efficiency",
+                            "Access controlled by <b>memory controller signals</b>.",
+                            "Access controlled by <b>clock pulses</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used in <b>conventional main memory</b>.",
+                            "Used in <b>modern high-performance systems</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Virtual Memory and Physical Memory",
+                    headings: ["Basis", "Virtual Memory", "Physical Memory"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Technique that uses <b>secondary storage</b> to extend RAM.",
+                            "Actual <b>main memory (RAM)</b> installed in system."
+                        ],
+                        [
+                            "Location",
+                            "Implemented using <b>hard disk / SSD space</b>.",
+                            "Implemented using <b>RAM modules</b>."
+                        ],
+                        [
+                            "Addressing",
+                            "Uses <b>virtual address space</b> mapped via MMU.",
+                            "Uses <b>physical address space</b>."
+                        ],
+                        [
+                            "Speed",
+                            "Accessed through <b>paging mechanism</b>.",
+                            "Accessed directly by <b>CPU memory bus</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Provides <b>memory abstraction and expansion</b>.",
+                            "Stores <b>active processes and instructions</b>."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Differentiate between RISC and CISC Architecture",
+                    headings: ["Basis", "RISC Architecture", "CISC Architecture"],
+                    differences: [
+                        [
+                            "Instruction Set",
+                            "Uses <b>Reduced Instruction Set</b> with limited operations.",
+                            "Uses <b>Complex Instruction Set</b> with large number of operations."
+                        ],
+                        [
+                            "Instruction Format",
+                            "Follows <b>fixed-length instruction format</b>.",
+                            "Supports <b>variable-length instruction format</b>."
+                        ],
+                        [
+                            "Execution Cycle",
+                            "Designed for <b>single clock cycle execution</b>.",
+                            "May require <b>multiple clock cycles</b> per instruction."
+                        ],
+                        [
+                            "Addressing Modes",
+                            "Supports <b>limited addressing modes</b>.",
+                            "Supports <b>multiple addressing modes</b>."
+                        ],
+                        [
+                            "Control Unit",
+                            "Uses <b>hardwired control unit</b>.",
+                            "Uses <b>microprogrammed control unit</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Register Organization and Stack Organization",
+                    headings: ["Basis", "Register Organization", "Stack Organization"],
+                    differences: [
+                        [
+                            "Storage Method",
+                            "Uses <b>general-purpose registers</b> for operands.",
+                            "Uses <b>LIFO stack structure</b> for operands."
+                        ],
+                        [
+                            "Instruction Format",
+                            "Instructions specify <b>register addresses</b> explicitly.",
+                            "Uses <b>implicit operand addressing</b>."
+                        ],
+                        [
+                            "Operand Access",
+                            "Operands accessed through <b>register selection</b>.",
+                            "Operands accessed via <b>push and pop operations</b>."
+                        ],
+                        [
+                            "Flexibility",
+                            "Provides <b>high operational flexibility</b>.",
+                            "Provides <b>limited operand access</b>."
+                        ],
+                        [
+                            "Example Usage",
+                            "Common in <b>RISC-based architectures</b>.",
+                            "Used in <b>expression evaluation systems</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between System Software and Application Software",
+                    headings: ["Basis", "System Software", "Application Software"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Software that <b>manages hardware resources</b>.",
+                            "Software designed to <b>perform user-specific tasks</b>."
+                        ],
+                        [
+                            "Level of Operation",
+                            "Operates at <b>system level</b>.",
+                            "Operates at <b>user level</b>."
+                        ],
+                        [
+                            "Dependency",
+                            "Provides <b>platform for application programs</b>.",
+                            "Runs on <b>system software environment</b>."
+                        ],
+                        [
+                            "Execution",
+                            "Starts during <b>system boot process</b>.",
+                            "Executed on <b>user demand</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>Operating system, device drivers, compiler</b>.",
+                            "<b>Word processor, browser, accounting software</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Compiler and Interpreter",
+                    headings: ["Basis", "Compiler", "Interpreter"],
+                    differences: [
+                        [
+                            "Translation Method",
+                            "Translates <b>entire source code at once</b>.",
+                            "Translates <b>line by line</b>."
+                        ],
+                        [
+                            "Output Generation",
+                            "Generates <b>object/executable file</b>.",
+                            "Does <b>not generate permanent object code</b>."
+                        ],
+                        [
+                            "Error Handling",
+                            "Reports <b>all errors after compilation</b>.",
+                            "Stops execution at <b>first encountered error</b>."
+                        ],
+                        [
+                            "Execution Speed",
+                            "Program executes with <b>optimized performance</b>.",
+                            "Program execution depends on <b>real-time translation</b>."
+                        ],
+                        [
+                            "Example Languages",
+                            "<b>C, C++</b>.",
+                            "<b>Python, JavaScript</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Assembler and Compiler",
+                    headings: ["Basis", "Assembler", "Compiler"],
+                    differences: [
+                        [
+                            "Input Language",
+                            "Translates <b>assembly language</b> into machine code.",
+                            "Translates <b>high-level language</b> into machine code."
+                        ],
+                        [
+                            "Translation Level",
+                            "Performs <b>low-level translation</b>.",
+                            "Performs <b>high-level language translation</b>."
+                        ],
+                        [
+                            "Output",
+                            "Produces <b>machine-level object code</b>.",
+                            "Produces <b>object code or executable file</b>."
+                        ],
+                        [
+                            "Complexity",
+                            "Handles <b>simple mnemonic instructions</b>.",
+                            "Handles <b>complex syntax and semantics</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used in <b>system programming</b>.",
+                            "Used in <b>application development</b>."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Differentiate between High-Level Language and Low-Level Language",
+                    headings: ["Basis", "High-Level Language", "Low-Level Language"],
+                    differences: [
+                        [
+                            "Abstraction Level",
+                            "Provides <b>high level of abstraction</b> from hardware.",
+                            "Provides <b>minimal abstraction</b> from hardware."
+                        ],
+                        [
+                            "Machine Dependency",
+                            "Generally <b>machine independent</b>.",
+                            "Usually <b>machine dependent</b>."
+                        ],
+                        [
+                            "Ease of Programming",
+                            "Uses <b>English-like syntax</b>.",
+                            "Uses <b>mnemonics or binary instructions</b>."
+                        ],
+                        [
+                            "Translation Requirement",
+                            "Requires <b>compiler or interpreter</b>.",
+                            "Requires <b>assembler</b> for translation."
+                        ],
+                        [
+                            "Examples",
+                            "<b>Java, Python, C++</b>.",
+                            "<b>Assembly language, Machine language</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Open Source Software and Proprietary Software",
+                    headings: ["Basis", "Open Source Software", "Proprietary Software"],
+                    differences: [
+                        [
+                            "Source Code Availability",
+                            "<b>Source code is publicly accessible</b>.",
+                            "<b>Source code is restricted</b> to owner."
+                        ],
+                        [
+                            "Modification Rights",
+                            "Allows <b>modification and redistribution</b>.",
+                            "Modification is <b>legally restricted</b>."
+                        ],
+                        [
+                            "Licensing",
+                            "Distributed under <b>open-source licenses</b>.",
+                            "Distributed under <b>commercial licenses</b>."
+                        ],
+                        [
+                            "Cost Structure",
+                            "Usually <b>free of licensing cost</b>.",
+                            "Requires <b>paid license</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>Linux, Mozilla Firefox</b>.",
+                            "<b>Windows, MS Office</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Firmware and System Software",
+                    headings: ["Basis", "Firmware", "System Software"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Permanent <b>program embedded in hardware</b>.",
+                            "Software that <b>manages system resources</b>."
+                        ],
+                        [
+                            "Storage Location",
+                            "Stored in <b>ROM or flash memory</b>.",
+                            "Stored in <b>secondary storage</b>."
+                        ],
+                        [
+                            "Function",
+                            "Controls <b>basic hardware operations</b>.",
+                            "Provides <b>interface between hardware and applications</b>."
+                        ],
+                        [
+                            "Modification",
+                            "Updated through <b>firmware flashing</b>.",
+                            "Can be <b>installed or updated normally</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>BIOS, embedded controller code</b>.",
+                            "<b>Operating system, device drivers</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Single-Tasking and Multi-Tasking OS",
+                    headings: ["Basis", "Single-Tasking OS", "Multi-Tasking OS"],
+                    differences: [
+                        [
+                            "Task Execution",
+                            "Executes <b>one process at a time</b>.",
+                            "Executes <b>multiple processes concurrently</b>."
+                        ],
+                        [
+                            "CPU Utilization",
+                            "CPU allocated to <b>single active task</b>.",
+                            "CPU time shared using <b>scheduling algorithms</b>."
+                        ],
+                        [
+                            "Resource Management",
+                            "Simplified <b>memory management</b>.",
+                            "Implements <b>advanced memory and process management</b>."
+                        ],
+                        [
+                            "Complexity",
+                            "Has <b>simple operating structure</b>.",
+                            "Requires <b>complex process coordination</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>MS-DOS</b>.",
+                            "<b>Windows, Linux</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between GUI and CUI",
+                    headings: ["Basis", "GUI", "CUI"],
+                    differences: [
+                        [
+                            "Full Form",
+                            "<b>Graphical User Interface</b>.",
+                            "<b>Character User Interface</b>."
+                        ],
+                        [
+                            "Interaction Method",
+                            "Uses <b>icons, menus, windows</b>.",
+                            "Uses <b>text-based commands</b>."
+                        ],
+                        [
+                            "User Input",
+                            "Input through <b>mouse and touch interface</b>.",
+                            "Input through <b>keyboard commands</b>."
+                        ],
+                        [
+                            "Learning Curve",
+                            "Provides <b>intuitive interaction</b>.",
+                            "Requires <b>command syntax knowledge</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>Windows OS interface</b>.",
+                            "<b>MS-DOS, Command Prompt</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Process and Thread",
+                    headings: ["Basis", "Process", "Thread"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Independent <b>program in execution</b>.",
+                            "Lightweight <b>execution unit within a process</b>."
+                        ],
+                        [
+                            "Memory Allocation",
+                            "Has <b>separate memory space</b>.",
+                            "Shares <b>process memory space</b>."
+                        ],
+                        [
+                            "Resource Ownership",
+                            "Owns <b>system resources</b> independently.",
+                            "Uses <b>resources of parent process</b>."
+                        ],
+                        [
+                            "Communication",
+                            "Requires <b>Inter-Process Communication (IPC)</b>.",
+                            "Communicates via <b>shared memory</b>."
+                        ],
+                        [
+                            "Overhead",
+                            "Involves <b>higher context switching overhead</b>.",
+                            "Has <b>lower context switching overhead</b>."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Differentiate between NAND and NOR Gate",
+                    headings: ["Basis", "NAND Gate", "NOR Gate"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Implements <b>NOT of AND operation</b>.",
+                            "Implements <b>NOT of OR operation</b>."
+                        ],
+                        [
+                            "Boolean Expression",
+                            "Output Y = <b>(A · B)'</b>.",
+                            "Output Y = <b>(A + B)'</b>."
+                        ],
+                        [
+                            "Output Condition",
+                            "Produces LOW only when <b>all inputs are HIGH</b>.",
+                            "Produces HIGH only when <b>all inputs are LOW</b>."
+                        ],
+                        [
+                            "Universal Gate Property",
+                            "Acts as <b>universal gate</b>.",
+                            "Acts as <b>universal gate</b>."
+                        ],
+                        [
+                            "Logic Symbol Basis",
+                            "Based on <b>AND gate with inversion</b>.",
+                            "Based on <b>OR gate with inversion</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between XOR and XNOR Gate",
+                    headings: ["Basis", "XOR Gate", "XNOR Gate"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Implements <b>exclusive OR operation</b>.",
+                            "Implements <b>exclusive NOR operation</b>."
+                        ],
+                        [
+                            "Output Condition",
+                            "Produces HIGH when <b>inputs are unequal</b>.",
+                            "Produces HIGH when <b>inputs are equal</b>."
+                        ],
+                        [
+                            "Boolean Expression",
+                            "Y = <b>A ⊕ B</b>.",
+                            "Y = <b>(A ⊕ B)'</b>."
+                        ],
+                        [
+                            "Inversion Relationship",
+                            "Does <b>not include inversion</b> at output.",
+                            "Includes <b>inversion of XOR output</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used in <b>binary addition circuits</b>.",
+                            "Used in <b>equality detectors</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Combinational Circuit and Sequential Circuit",
+                    headings: ["Basis", "Combinational Circuit", "Sequential Circuit"],
+                    differences: [
+                        [
+                            "Output Dependency",
+                            "Output depends only on <b>present inputs</b>.",
+                            "Output depends on <b>present inputs and previous state</b>."
+                        ],
+                        [
+                            "Memory Element",
+                            "Does <b>not contain memory</b>.",
+                            "Contains <b>memory elements</b>."
+                        ],
+                        [
+                            "Feedback",
+                            "Has <b>no feedback path</b>.",
+                            "Includes <b>feedback mechanism</b>."
+                        ],
+                        [
+                            "Clock Requirement",
+                            "Operates <b>without clock signal</b>.",
+                            "Generally requires <b>clock signal</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>Adders, multiplexers</b>.",
+                            "<b>Flip-flops, counters</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Half Adder and Full Adder",
+                    headings: ["Basis", "Half Adder", "Full Adder"],
+                    differences: [
+                        [
+                            "Number of Inputs",
+                            "Has <b>two input bits</b>.",
+                            "Has <b>three input bits</b> including carry."
+                        ],
+                        [
+                            "Carry Handling",
+                            "Does <b>not consider previous carry</b>.",
+                            "Handles <b>carry-in input</b>."
+                        ],
+                        [
+                            "Output",
+                            "Produces <b>Sum and Carry</b>.",
+                            "Produces <b>Sum and Carry-out</b>."
+                        ],
+                        [
+                            "Circuit Complexity",
+                            "Uses <b>basic logic gates</b>.",
+                            "Constructed using <b>two half adders and OR gate</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used in <b>single-bit addition</b>.",
+                            "Used in <b>multi-bit binary addition</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Boolean Expression and Logic Circuit",
+                    headings: ["Basis", "Boolean Expression", "Logic Circuit"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Mathematical <b>representation of logic operations</b>.",
+                            "Physical <b>implementation using logic gates</b>."
+                        ],
+                        [
+                            "Form",
+                            "Written using <b>variables and operators</b>.",
+                            "Constructed using <b>electronic components</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Used for <b>logical analysis and simplification</b>.",
+                            "Used for <b>hardware realization</b>."
+                        ],
+                        [
+                            "Medium",
+                            "Exists in <b>symbolic form</b>.",
+                            "Exists in <b>physical form</b>."
+                        ],
+                        [
+                            "Example",
+                            "<b>Y = A + BC</b>.",
+                            "Circuit using <b>AND and OR gates</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Sum of Products (SOP) and Product of Sums (POS)",
+                    headings: ["Basis", "Sum of Products (SOP)", "Product of Sums (POS)"],
+                    differences: [
+                        [
+                            "Structure",
+                            "Formed as <b>OR of multiple AND terms</b>.",
+                            "Formed as <b>AND of multiple OR terms</b>."
+                        ],
+                        [
+                            "Basic Unit",
+                            "Each term is called <b>minterm</b>.",
+                            "Each term is called <b>maxterm</b>."
+                        ],
+                        [
+                            "Standard Form",
+                            "Represents function using <b>canonical minterms</b>.",
+                            "Represents function using <b>canonical maxterms</b>."
+                        ],
+                        [
+                            "Gate Implementation",
+                            "Implemented using <b>AND-OR structure</b>.",
+                            "Implemented using <b>OR-AND structure</b>."
+                        ],
+                        [
+                            "Example",
+                            "<b>Y = A'B + AB'</b>.",
+                            "<b>Y = (A + B)(A' + B')</b>."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Differentiate between Binary and Decimal Number System",
+                    headings: ["Basis", "Binary Number System", "Decimal Number System"],
+                    differences: [
+                        [
+                            "Base",
+                            "Based on <b>base 2</b>.",
+                            "Based on <b>base 10</b>."
+                        ],
+                        [
+                            "Digits Used",
+                            "Uses digits <b>0 and 1</b>.",
+                            "Uses digits <b>0 to 9</b>."
+                        ],
+                        [
+                            "Place Value",
+                            "Place values are powers of <b>2</b>.",
+                            "Place values are powers of <b>10</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used in <b>digital electronics and computing systems</b>.",
+                            "Used in <b>general arithmetic calculations</b>."
+                        ],
+                        [
+                            "Representation Example",
+                            "<b>(1011)₂</b>.",
+                            "<b>(459)₁₀</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Binary and Hexadecimal Number System",
+                    headings: ["Basis", "Binary Number System", "Hexadecimal Number System"],
+                    differences: [
+                        [
+                            "Base",
+                            "Based on <b>base 2</b>.",
+                            "Based on <b>base 16</b>."
+                        ],
+                        [
+                            "Digits Used",
+                            "Uses <b>0 and 1</b>.",
+                            "Uses <b>0–9 and A–F</b>."
+                        ],
+                        [
+                            "Bit Representation",
+                            "Each digit represents <b>1 bit</b>.",
+                            "Each digit represents <b>4 bits</b>."
+                        ],
+                        [
+                            "Length of Representation",
+                            "Produces <b>longer bit patterns</b>.",
+                            "Provides <b>compact representation</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used in <b>low-level machine operations</b>.",
+                            "Used in <b>memory addressing and debugging</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Positional and Non-Positional Number System",
+                    headings: ["Basis", "Positional Number System", "Non-Positional Number System"],
+                    differences: [
+                        [
+                            "Digit Value",
+                            "Digit value depends on <b>position and base</b>.",
+                            "Digit value does <b>not depend on position</b>."
+                        ],
+                        [
+                            "Place Value Concept",
+                            "Implements <b>place value system</b>.",
+                            "Does not implement <b>place value concept</b>."
+                        ],
+                        [
+                            "Arithmetic Operations",
+                            "Supports <b>systematic arithmetic calculations</b>.",
+                            "Arithmetic operations are <b>complex</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>Binary, Decimal, Hexadecimal</b>.",
+                            "<b>Roman numerals</b>."
+                        ],
+                        [
+                            "Representation Efficiency",
+                            "Provides <b>efficient numeric representation</b>.",
+                            "Provides <b>limited numeric flexibility</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between ASCII and Unicode",
+                    headings: ["Basis", "ASCII", "Unicode"],
+                    differences: [
+                        [
+                            "Full Form",
+                            "<b>American Standard Code for Information Interchange</b>.",
+                            "<b>Universal Character Encoding Standard</b>."
+                        ],
+                        [
+                            "Bit Length",
+                            "Uses <b>7-bit or 8-bit encoding</b>.",
+                            "Uses <b>16-bit or more encoding</b>."
+                        ],
+                        [
+                            "Character Support",
+                            "Supports <b>128 or 256 characters</b>.",
+                            "Supports <b>multilingual character set</b>."
+                        ],
+                        [
+                            "Language Coverage",
+                            "Primarily supports <b>English characters</b>.",
+                            "Supports <b>global scripts and symbols</b>."
+                        ],
+                        [
+                            "Usage Scope",
+                            "Used in <b>basic text encoding</b>.",
+                            "Used in <b>modern international applications</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between ASCII and ISCII",
+                    headings: ["Basis", "ASCII", "ISCII"],
+                    differences: [
+                        [
+                            "Full Form",
+                            "<b>American Standard Code for Information Interchange</b>.",
+                            "<b>Indian Script Code for Information Interchange</b>."
+                        ],
+                        [
+                            "Character Set Focus",
+                            "Designed for <b>English characters</b>.",
+                            "Designed for <b>Indian language scripts</b>."
+                        ],
+                        [
+                            "Bit Length",
+                            "Uses <b>7-bit encoding</b> (standard ASCII).",
+                            "Uses <b>8-bit encoding</b>."
+                        ],
+                        [
+                            "Script Support",
+                            "Does not support <b>Indian scripts</b>.",
+                            "Supports <b>Devanagari and other Indian scripts</b>."
+                        ],
+                        [
+                            "Standardization",
+                            "Internationally adopted <b>early character encoding standard</b>.",
+                            "Developed by <b>Bureau of Indian Standards (BIS)</b>."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Differentiate between Address Bus, Data Bus and Control Bus",
+                    headings: ["Basis", "Address Bus", "Data Bus", "Control Bus"],
+                    differences: [
+                        [
+                            "Function",
+                            "Carries <b>memory address information</b> from CPU.",
+                            "Carries <b>actual data</b> between components.",
+                            "Carries <b>control and timing signals</b>."
+                        ],
+                        [
+                            "Direction",
+                            "Generally <b>unidirectional</b>.",
+                            "Typically <b>bidirectional</b>.",
+                            "Can be <b>unidirectional or bidirectional</b>."
+                        ],
+                        [
+                            "Width Impact",
+                            "Determines <b>maximum addressable memory</b>.",
+                            "Determines <b>data transfer size per cycle</b>.",
+                            "Does not define size; defines <b>operation coordination</b>."
+                        ],
+                        [
+                            "Signal Type",
+                            "Transmits <b>binary address values</b>.",
+                            "Transmits <b>binary data values</b>.",
+                            "Transmits <b>read, write, interrupt signals</b>."
+                        ],
+                        [
+                            "Example Role",
+                            "Selects <b>memory location</b>.",
+                            "Transfers <b>instruction or operand</b>.",
+                            "Initiates <b>memory read/write operation</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between General Bus Architecture and PCI",
+                    headings: ["Basis", "General Bus Architecture", "PCI"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Common <b>shared communication pathway</b>.",
+                            "<b>Peripheral Component Interconnect</b> standard."
+                        ],
+                        [
+                            "Design Type",
+                            "Based on <b>basic parallel bus structure</b>.",
+                            "Based on <b>high-speed local bus architecture</b>."
+                        ],
+                        [
+                            "Performance",
+                            "Supports <b>standard data transfer mechanism</b>.",
+                            "Provides <b>high bandwidth data transfer</b>."
+                        ],
+                        [
+                            "Configuration",
+                            "May require <b>manual configuration</b>.",
+                            "Supports <b>plug and play configuration</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used for <b>basic component interconnection</b>.",
+                            "Used for <b>modern expansion cards</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Instruction Format and Addressing Mode",
+                    headings: ["Basis", "Instruction Format", "Addressing Mode"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Structure of <b>binary instruction layout</b>.",
+                            "Method of <b>locating operand</b>."
+                        ],
+                        [
+                            "Components",
+                            "Includes <b>opcode and operand fields</b>.",
+                            "Defines <b>effective address calculation</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Specifies <b>operation and operand location</b>.",
+                            "Specifies <b>how operand is accessed</b>."
+                        ],
+                        [
+                            "Hardware Role",
+                            "Decoded by <b>instruction decoder</b>.",
+                            "Interpreted by <b>address generation unit</b>."
+                        ],
+                        [
+                            "Example",
+                            "<b>[Opcode | Operand]</b> structure.",
+                            "<b>Immediate, Direct, Register modes</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Immediate, Direct, Register and Indirect Addressing Modes",
+                    headings: ["Basis", "Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"],
+                    differences: [
+                        [
+                            "Operand Location",
+                            "Operand is part of <b>instruction itself</b>.",
+                            "Instruction contains <b>memory address of operand</b>.",
+                            "Operand stored in <b>CPU register</b>.",
+                            "Instruction specifies <b>address of pointer</b>."
+                        ],
+                        [
+                            "Memory Access",
+                            "Does <b>not require additional memory access</b>.",
+                            "Requires <b>one memory access</b>.",
+                            "Does <b>not require memory access</b>.",
+                            "Requires <b>multiple memory accesses</b>."
+                        ],
+                        [
+                            "Execution Speed",
+                            "Provides <b>fast execution</b>.",
+                            "Provides <b>moderate execution speed</b>.",
+                            "Provides <b>high-speed execution</b>.",
+                            "Involves <b>additional access overhead</b>."
+                        ],
+                        [
+                            "Instruction Length",
+                            "Instruction length increases due to <b>embedded data</b>.",
+                            "Contains <b>explicit memory address field</b>.",
+                            "Contains <b>register identifier</b>.",
+                            "Contains <b>pointer reference</b>."
+                        ],
+                        [
+                            "Example",
+                            "<b>MOV A, #5</b>.",
+                            "<b>MOV A, 5000H</b>.",
+                            "<b>MOV A, R1</b>.",
+                            "<b>MOV A, @R1</b>."
+                        ]
+                    ]
+                }
+                ,
+                {
+                    questionName: "Differentiate between Word Processor and Text Editor",
+                    headings: ["Basis", "Word Processor", "Text Editor"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Designed for <b>document creation and formatting</b>.",
+                            "Designed for <b>editing plain text files</b>."
+                        ],
+                        [
+                            "Formatting Features",
+                            "Supports <b>fonts, styles, images, tables</b>.",
+                            "Provides <b>minimal formatting support</b>."
+                        ],
+                        [
+                            "File Type",
+                            "Generates <b>formatted document files</b>.",
+                            "Generates <b>plain text files</b>."
+                        ],
+                        [
+                            "Usage Domain",
+                            "Used for <b>reports, letters, documentation</b>.",
+                            "Used for <b>coding and configuration files</b>."
+                        ],
+                        [
+                            "Examples",
+                            "<b>MS Word, LibreOffice Writer</b>.",
+                            "<b>Notepad, Vim</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Workbook and Worksheet",
+                    headings: ["Basis", "Workbook", "Worksheet"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Collection of <b>multiple worksheets</b> in a file.",
+                            "Single <b>spreadsheet page</b> within workbook."
+                        ],
+                        [
+                            "Structure",
+                            "Acts as <b>container file</b>.",
+                            "Organized in <b>rows and columns</b>."
+                        ],
+                        [
+                            "File Level",
+                            "Saved as a <b>single spreadsheet file</b>.",
+                            "Exists as a <b>component of workbook</b>."
+                        ],
+                        [
+                            "Content Scope",
+                            "Can store <b>multiple data sheets</b>.",
+                            "Stores <b>specific dataset</b>."
+                        ],
+                        [
+                            "Example",
+                            "<b>.xlsx file</b>.",
+                            "<b>Sheet1, Sheet2</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Relative Cell Reference and Absolute Cell Reference",
+                    headings: ["Basis", "Relative Cell Reference", "Absolute Cell Reference"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Cell reference that <b>changes during copy</b>.",
+                            "Cell reference that <b>remains constant</b>."
+                        ],
+                        [
+                            "Symbol Usage",
+                            "Does <b>not use dollar ($) symbol</b>.",
+                            "Uses <b>$ symbol</b> before row and column."
+                        ],
+                        [
+                            "Formula Behavior",
+                            "Adjusts based on <b>new position</b>.",
+                            "Locks specific <b>row and column</b>."
+                        ],
+                        [
+                            "Example Format",
+                            "<b>A1</b>.",
+                            "<b>$A$1</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used for <b>dynamic calculations</b>.",
+                            "Used for <b>fixed reference calculations</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between Transition and Animation",
+                    headings: ["Basis", "Transition", "Animation"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Visual effect between <b>two slides</b>.",
+                            "Visual effect applied to <b>objects within slide</b>."
+                        ],
+                        [
+                            "Scope",
+                            "Applied to <b>entire slide</b>.",
+                            "Applied to <b>text, images, shapes</b>."
+                        ],
+                        [
+                            "Trigger",
+                            "Occurs during <b>slide change</b>.",
+                            "Occurs during <b>presentation flow</b>."
+                        ],
+                        [
+                            "Control Options",
+                            "Controlled by <b>transition settings</b>.",
+                            "Controlled by <b>animation pane</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Enhances <b>slide navigation</b>.",
+                            "Enhances <b>content emphasis</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between 1’s Complement and 2’s Complement",
+                    headings: ["Basis", "1’s Complement", "2’s Complement"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Formed by <b>inverting all bits</b>.",
+                            "Formed by <b>adding 1 to 1’s complement</b>."
+                        ],
+                        [
+                            "Zero Representation",
+                            "Has <b>two representations of zero</b>.",
+                            "Has <b>single representation of zero</b>."
+                        ],
+                        [
+                            "Arithmetic Operation",
+                            "Requires <b>end-around carry</b>.",
+                            "Does not require <b>end-around carry</b>."
+                        ],
+                        [
+                            "Range of Representation",
+                            "Provides <b>asymmetric range</b>.",
+                            "Provides <b>balanced signed representation</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used in <b>early computing systems</b>.",
+                            "Used in <b>modern signed number representation</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Differentiate between UTF-8 and UTF-32",
+                    headings: ["Basis", "UTF-8", "UTF-32"],
+                    differences: [
+                        [
+                            "Encoding Length",
+                            "Uses <b>variable-length encoding (1–4 bytes)</b>.",
+                            "Uses <b>fixed-length encoding (4 bytes)</b>."
+                        ],
+                        [
+                            "Storage Efficiency",
+                            "Provides <b>efficient storage for ASCII characters</b>.",
+                            "Consumes <b>uniform memory per character</b>."
+                        ],
+                        [
+                            "Compatibility",
+                            "Backward compatible with <b>ASCII</b>.",
+                            "Not directly compatible with <b>ASCII</b>."
+                        ],
+                        [
+                            "Memory Usage",
+                            "Optimizes <b>memory utilization</b>.",
+                            "Requires <b>higher memory allocation</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used in <b>web and network protocols</b>.",
+                            "Used in <b>internal text processing systems</b>."
+                        ]
+                    ]
+                }
+                ,
+                {
+                    questionName: "Difference Between Problem Solving and Programming",
+                    headings: ["Basis", "Problem Solving", "Programming"],
+                    differences: [
+                        [
+                            "Meaning",
+                            "Process of <b>analyzing a problem</b> and designing a logical solution.",
+                            "Process of <b>implementing the solution</b> using a programming language."
+                        ],
+                        [
+                            "Focus",
+                            "Emphasizes <b>logic development</b> and strategy formulation.",
+                            "Emphasizes <b>code writing</b> and syntax correctness."
+                        ],
+                        [
+                            "Tools Used",
+                            "Uses <b>algorithm, flowchart, pseudocode</b>.",
+                            "Uses <b>compiler/interpreter</b> and IDE."
+                        ],
+                        [
+                            "Dependency",
+                            "Independent of any programming language.",
+                            "Language-dependent implementation."
+                        ],
+                        [
+                            "Objective",
+                            "To obtain an <b>optimal and logical solution</b>.",
+                            "To produce an <b>executable program</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Algorithm and Flowchart",
+                    headings: ["Basis", "Algorithm", "Flowchart"],
+                    differences: [
+                        [
+                            "Representation",
+                            "Written in <b>step-by-step textual form</b>.",
+                            "Represented using <b>standard graphical symbols</b>."
+                        ],
+                        [
+                            "Format",
+                            "Uses numbered logical steps.",
+                            "Uses <b>symbols and arrows</b> to show flow."
+                        ],
+                        [
+                            "Ease of Modification",
+                            "Easy to modify textually.",
+                            "Requires redrawing for modification."
+                        ],
+                        [
+                            "Clarity",
+                            "Less visual but logically structured.",
+                            "More <b>visual and illustrative</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Describes logical procedure.",
+                            "Shows <b>control flow</b> of program."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Algorithm and Pseudocode",
+                    headings: ["Basis", "Algorithm", "Pseudocode"],
+                    differences: [
+                        [
+                            "Nature",
+                            "General step-by-step procedure.",
+                            "Structured description using <b>program-like statements</b>."
+                        ],
+                        [
+                            "Language Style",
+                            "Written in simple natural language.",
+                            "Uses <b>syntax resembling programming language</b>."
+                        ],
+                        [
+                            "Standardization",
+                            "No fixed writing standard.",
+                            "Follows structured keywords like <b>IF, WHILE, FOR</b>."
+                        ],
+                        [
+                            "Implementation Readiness",
+                            "May require refinement before coding.",
+                            "Closer to actual <b>source code</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "Focuses on logical clarity.",
+                            "Bridges logic and coding."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Flowchart and Pseudocode",
+                    headings: ["Basis", "Flowchart", "Pseudocode"],
+                    differences: [
+                        [
+                            "Form",
+                            "Graphical representation.",
+                            "Text-based structured representation."
+                        ],
+                        [
+                            "Symbols",
+                            "Uses <b>predefined symbols</b> (oval, rectangle, diamond).",
+                            "Uses <b>structured keywords</b>."
+                        ],
+                        [
+                            "Space Requirement",
+                            "Requires more space.",
+                            "Compact and concise."
+                        ],
+                        [
+                            "Modification",
+                            "Difficult to modify.",
+                            "Easy to edit text."
+                        ],
+                        [
+                            "Understanding",
+                            "Suitable for visual learners.",
+                            "Suitable for coding-oriented learners."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Coding and Debugging",
+                    headings: ["Basis", "Coding", "Debugging"],
+                    differences: [
+                        [
+                            "Meaning",
+                            "Writing <b>source code</b> for a program.",
+                            "Identifying and removing <b>errors (bugs)</b>."
+                        ],
+                        [
+                            "Stage",
+                            "Occurs during program development.",
+                            "Occurs after code execution/testing."
+                        ],
+                        [
+                            "Objective",
+                            "To implement logic into executable form.",
+                            "To ensure <b>correct and error-free output</b>."
+                        ],
+                        [
+                            "Tools Used",
+                            "Uses editor, compiler.",
+                            "Uses <b>debugger tools</b>."
+                        ],
+                        [
+                            "Outcome",
+                            "Produces program code.",
+                            "Improves program reliability."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Testing and Debugging",
+                    headings: ["Basis", "Testing", "Debugging"],
+                    differences: [
+                        [
+                            "Meaning",
+                            "Process of <b>executing program</b> to detect errors.",
+                            "Process of <b>fixing identified errors</b>."
+                        ],
+                        [
+                            "Purpose",
+                            "To find defects.",
+                            "To remove defects."
+                        ],
+                        [
+                            "Performed By",
+                            "Testers or developers.",
+                            "Primarily developers."
+                        ],
+                        [
+                            "Techniques",
+                            "Uses <b>test cases</b> and validation methods.",
+                            "Uses breakpoints and step execution."
+                        ],
+                        [
+                            "Result",
+                            "Reports presence of errors.",
+                            "Ensures correct functioning."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Logical Error, Syntax Error and Runtime Error",
+                    headings: ["Basis", "Logical Error", "Syntax Error", "Runtime Error"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Error in <b>program logic</b>.",
+                            "Violation of <b>language grammar rules</b>.",
+                            "Error occurring during <b>program execution</b>."
+                        ],
+                        [
+                            "Detection",
+                            "Not detected by compiler.",
+                            "Detected at compile time.",
+                            "Detected at runtime."
+                        ],
+                        [
+                            "Program Execution",
+                            "Program executes but gives incorrect output.",
+                            "Program does not execute.",
+                            "Program terminates abnormally."
+                        ],
+                        [
+                            "Example",
+                            "Wrong formula in calculation.",
+                            "Missing semicolon.",
+                            "Division by zero."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Verification and Validation",
+                    headings: ["Basis", "Verification", "Validation"],
+                    differences: [
+                        [
+                            "Meaning",
+                            "Ensures product meets <b>specified requirements</b>.",
+                            "Ensures product meets <b>user needs</b>."
+                        ],
+                        [
+                            "Focus",
+                            "Checks correctness of development process.",
+                            "Checks correctness of final product."
+                        ],
+                        [
+                            "Method",
+                            "Includes reviews and inspections.",
+                            "Includes testing and execution."
+                        ],
+                        [
+                            "Question Answered",
+                            "\"Are we building the product right?\"",
+                            "\"Are we building the right product?\""
+                        ],
+                        [
+                            "Stage",
+                            "Performed during development phase.",
+                            "Performed after product completion."
+                        ]
+                    ]
+                }
+                ,
+                {
+                    questionName: "Difference Between For Loop and While Loop",
+                    headings: ["Basis", "For Loop", "While Loop"],
+                    differences: [
+                        [
+                            "Structure",
+                            "Initialization, condition and update written in <b>single statement</b>.",
+                            "Initialization done separately; only <b>condition</b> inside loop."
+                        ],
+                        [
+                            "Usage",
+                            "Used when <b>number of iterations is known</b>.",
+                            "Used when iterations depend on <b>logical condition</b>."
+                        ],
+                        [
+                            "Control Variable",
+                            "Loop variable managed automatically.",
+                            "Programmer must manually update variable."
+                        ],
+                        [
+                            "Syntax Compactness",
+                            "More <b>compact and concise</b>.",
+                            "Less compact structure."
+                        ],
+                        [
+                            "Application",
+                            "Suitable for <b>counter-controlled loops</b>.",
+                            "Suitable for <b>condition-controlled loops</b>."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Sequential, Selection and Iterative Control Structures",
+                    headings: ["Basis", "Sequential", "Selection", "Iterative"],
+                    differences: [
+                        [
+                            "Execution Flow",
+                            "Statements executed in <b>linear order</b>.",
+                            "Executes based on <b>decision condition</b>.",
+                            "Executes statements <b>repeatedly</b>."
+                        ],
+                        [
+                            "Decision Making",
+                            "No decision involved.",
+                            "Uses <b>IF/ELSE or SWITCH</b>.",
+                            "Uses <b>loop condition</b>."
+                        ],
+                        [
+                            "Repetition",
+                            "No repetition.",
+                            "Single path selected.",
+                            "Repetition until condition fails."
+                        ],
+                        [
+                            "Complexity",
+                            "Simplest control structure.",
+                            "Moderate logical branching.",
+                            "Higher logical control due to repetition."
+                        ],
+                        [
+                            "Example",
+                            "Input → Process → Output.",
+                            "IF marks > 40 THEN pass.",
+                            "FOR or WHILE loop."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Recursion and Iteration",
+                    headings: ["Basis", "Recursion", "Iteration"],
+                    differences: [
+                        [
+                            "Concept",
+                            "Function calls <b>itself</b>.",
+                            "Repeats statements using <b>loops</b>."
+                        ],
+                        [
+                            "Termination",
+                            "Requires <b>base condition</b>.",
+                            "Requires loop termination condition."
+                        ],
+                        [
+                            "Memory Usage",
+                            "Uses <b>call stack</b> memory.",
+                            "Uses minimal memory."
+                        ],
+                        [
+                            "Execution Speed",
+                            "Slower due to function call overhead.",
+                            "Faster execution."
+                        ],
+                        [
+                            "Suitability",
+                            "Suitable for <b>divide-and-conquer problems</b>.",
+                            "Suitable for repetitive calculations."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Local Variable and Global Variable",
+                    headings: ["Basis", "Local Variable", "Global Variable"],
+                    differences: [
+                        [
+                            "Scope",
+                            "Accessible within <b>function/block</b> only.",
+                            "Accessible throughout the program."
+                        ],
+                        [
+                            "Declaration",
+                            "Declared inside function.",
+                            "Declared outside all functions."
+                        ],
+                        [
+                            "Lifetime",
+                            "Exists during function execution.",
+                            "Exists during entire program execution."
+                        ],
+                        [
+                            "Memory Allocation",
+                            "Allocated in <b>stack memory</b>.",
+                            "Allocated in global memory area."
+                        ],
+                        [
+                            "Data Sharing",
+                            "Cannot be shared across functions.",
+                            "Can be accessed by multiple functions."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Parameter and Argument",
+                    headings: ["Basis", "Parameter", "Argument"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Variable defined in <b>function declaration</b>.",
+                            "Actual value passed during <b>function call</b>."
+                        ],
+                        [
+                            "Role",
+                            "Acts as placeholder.",
+                            "Provides real data."
+                        ],
+                        [
+                            "Location",
+                            "Appears in function definition.",
+                            "Appears in function invocation."
+                        ],
+                        [
+                            "Example",
+                            "function add(a, b) → a, b are parameters.",
+                            "add(5, 10) → 5, 10 are arguments."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Call by Value and Call by Reference",
+                    headings: ["Basis", "Call by Value", "Call by Reference"],
+                    differences: [
+                        [
+                            "Data Passed",
+                            "Passes <b>copy of value</b>.",
+                            "Passes <b>address/reference</b>."
+                        ],
+                        [
+                            "Effect on Original",
+                            "Original value remains unchanged.",
+                            "Original value gets modified."
+                        ],
+                        [
+                            "Memory Usage",
+                            "Separate memory location used.",
+                            "Same memory location used."
+                        ],
+                        [
+                            "Safety",
+                            "More secure as data is protected.",
+                            "Less secure due to direct access."
+                        ],
+                        [
+                            "Performance",
+                            "Slightly slower for large data.",
+                            "Efficient for large data."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Structured Programming and Object-Oriented Programming",
+                    headings: ["Basis", "Structured Programming", "Object-Oriented Programming"],
+                    differences: [
+                        [
+                            "Approach",
+                            "Follows <b>top-down approach</b>.",
+                            "Follows <b>bottom-up approach</b>."
+                        ],
+                        [
+                            "Focus",
+                            "Focuses on <b>functions and procedures</b>.",
+                            "Focuses on <b>objects and classes</b>."
+                        ],
+                        [
+                            "Data Security",
+                            "No data hiding mechanism.",
+                            "Supports <b>encapsulation</b>."
+                        ],
+                        [
+                            "Reusability",
+                            "Limited reusability.",
+                            "Supports <b>inheritance and polymorphism</b>."
+                        ],
+                        [
+                            "Examples",
+                            "C language.",
+                            "Java, C++."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Procedural Language and Object-Oriented Language",
+                    headings: ["Basis", "Procedural Language", "Object-Oriented Language"],
+                    differences: [
+                        [
+                            "Program Structure",
+                            "Organized around <b>procedures/functions</b>.",
+                            "Organized around <b>objects and classes</b>."
+                        ],
+                        [
+                            "Data Handling",
+                            "Data and functions are separate.",
+                            "Data and methods combined into objects."
+                        ],
+                        [
+                            "Security",
+                            "No strict data protection.",
+                            "Supports <b>data hiding</b>."
+                        ],
+                        [
+                            "Reusability",
+                            "Limited code reuse.",
+                            "High reusability through inheritance."
+                        ],
+                        [
+                            "Examples",
+                            "C, Pascal.",
+                            "Java, Python."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Difference Between Interpreter, Compiler and Assembler",
+                    headings: ["Basis", "Interpreter", "Compiler", "Assembler"],
+                    differences: [
+                        [
+                            "Translation Method",
+                            "Translates <b>one statement at a time</b>.",
+                            "Translates <b>entire program at once</b>.",
+                            "Translates <b>assembly language</b> into machine code."
+                        ],
+                        [
+                            "Output Generation",
+                            "No separate object code generated.",
+                            "Generates <b>object/executable file</b>.",
+                            "Generates machine-level object code."
+                        ],
+                        [
+                            "Error Handling",
+                            "Stops at first error.",
+                            "Displays all errors after compilation.",
+                            "Reports syntax errors in assembly code."
+                        ],
+                        [
+                            "Execution Speed",
+                            "Slower due to line-by-line execution.",
+                            "Faster execution after compilation.",
+                            "Very fast as output is machine code."
+                        ],
+                        [
+                            "Examples",
+                            "Python Interpreter.",
+                            "C/C++ Compiler.",
+                            "MASM, TASM."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Interactive Mode and Script Mode",
+                    headings: ["Basis", "Interactive Mode", "Script Mode"],
+                    differences: [
+                        [
+                            "Execution Style",
+                            "Executes <b>single statement immediately</b>.",
+                            "Executes <b>complete program file</b>."
+                        ],
+                        [
+                            "Input Method",
+                            "User enters commands one by one.",
+                            "Program written and saved in <b>.py file</b>."
+                        ],
+                        [
+                            "Error Detection",
+                            "Errors shown instantly.",
+                            "Errors shown after running script."
+                        ],
+                        [
+                            "Usage",
+                            "Suitable for testing small code snippets.",
+                            "Suitable for large program development."
+                        ],
+                        [
+                            "Prompt Symbol",
+                            "Uses >>> prompt.",
+                            "No interactive prompt used."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between l-value and r-value",
+                    headings: ["Basis", "l-value", "r-value"],
+                    differences: [
+                        [
+                            "Meaning",
+                            "Refers to <b>memory location</b> of variable.",
+                            "Refers to <b>data value</b> stored in variable."
+                        ],
+                        [
+                            "Position in Assignment",
+                            "Appears on <b>left side</b> of assignment operator.",
+                            "Appears on <b>right side</b> of assignment operator."
+                        ],
+                        [
+                            "Modifiability",
+                            "Can be assigned a new value.",
+                            "Cannot be assigned directly."
+                        ],
+                        [
+                            "Memory Reference",
+                            "Has identifiable memory address.",
+                            "May be temporary value without address."
+                        ],
+                        [
+                            "Example",
+                            "x = 10 → x is l-value.",
+                            "x = 10 → 10 is r-value."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Implicit Type Conversion and Explicit Type Conversion",
+                    headings: ["Basis", "Implicit Type Conversion", "Explicit Type Conversion"],
+                    differences: [
+                        [
+                            "Meaning",
+                            "Automatic type conversion by <b>compiler/interpreter</b>.",
+                            "Manual type conversion by <b>programmer</b>."
+                        ],
+                        [
+                            "Control",
+                            "No user control.",
+                            "Controlled using type casting functions."
+                        ],
+                        [
+                            "Syntax",
+                            "No special syntax required.",
+                            "Uses <b>int(), float(), str()</b> etc."
+                        ],
+                        [
+                            "Risk",
+                            "May cause data loss silently.",
+                            "Programmer aware of conversion."
+                        ],
+                        [
+                            "Example",
+                            "int + float → float result.",
+                            "int(5.7) converts float to integer."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Difference Between List and Tuple",
+                    headings: ["Basis", "List", "Tuple"],
+                    differences: [
+                        [
+                            "Mutability",
+                            "<b>Mutable</b> data type.",
+                            "<b>Immutable</b> data type."
+                        ],
+                        [
+                            "Syntax",
+                            "Defined using <b>square brackets [ ]</b>.",
+                            "Defined using <b>parentheses ( )</b>."
+                        ],
+                        [
+                            "Modification",
+                            "Elements can be added, removed or updated.",
+                            "Elements cannot be modified after creation."
+                        ],
+                        [
+                            "Performance",
+                            "Slightly slower due to mutability.",
+                            "Faster due to immutability."
+                        ],
+                        [
+                            "Usage",
+                            "Used for dynamic data storage.",
+                            "Used for fixed data collection."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between String and List",
+                    headings: ["Basis", "String", "List"],
+                    differences: [
+                        [
+                            "Nature",
+                            "Sequence of <b>characters</b>.",
+                            "Sequence of <b>elements of any data type</b>."
+                        ],
+                        [
+                            "Mutability",
+                            "Immutable.",
+                            "Mutable."
+                        ],
+                        [
+                            "Syntax",
+                            "Defined using <b>quotes</b> (' ' or \" \").",
+                            "Defined using square brackets [ ]."
+                        ],
+                        [
+                            "Element Type",
+                            "Stores only characters.",
+                            "Stores heterogeneous elements."
+                        ],
+                        [
+                            "Operations",
+                            "Supports string-specific methods.",
+                            "Supports list manipulation methods."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Mutable and Immutable Data Types",
+                    headings: ["Basis", "Mutable Data Type", "Immutable Data Type"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Value can be <b>modified after creation</b>.",
+                            "Value cannot be modified after creation."
+                        ],
+                        [
+                            "Memory Handling",
+                            "Changes occur in same memory location.",
+                            "New memory location created on modification."
+                        ],
+                        [
+                            "Examples",
+                            "List, Dictionary, Set.",
+                            "String, Tuple, Integer."
+                        ],
+                        [
+                            "Performance",
+                            "Requires more memory management.",
+                            "Memory efficient."
+                        ],
+                        [
+                            "Data Safety",
+                            "Less secure due to changeability.",
+                            "More secure due to fixed value."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Indexing and Slicing",
+                    headings: ["Basis", "Indexing", "Slicing"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Accesses a <b>single element</b>.",
+                            "Accesses <b>multiple elements</b>."
+                        ],
+                        [
+                            "Syntax",
+                            "Uses single index: a[i].",
+                            "Uses range: a[start:stop:step]."
+                        ],
+                        [
+                            "Return Type",
+                            "Returns single value.",
+                            "Returns sequence."
+                        ],
+                        [
+                            "Negative Index",
+                            "Supports negative indexing.",
+                            "Supports negative slicing."
+                        ],
+                        [
+                            "Example",
+                            "a[2].",
+                            "a[1:4]."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Shallow Copy and Deep Copy",
+                    headings: ["Basis", "Shallow Copy", "Deep Copy"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Creates copy of <b>outer object only</b>.",
+                            "Creates copy of <b>entire nested objects</b>."
+                        ],
+                        [
+                            "Reference Handling",
+                            "Inner objects share same references.",
+                            "Inner objects have separate references."
+                        ],
+                        [
+                            "Effect of Modification",
+                            "Changes in nested objects affect original.",
+                            "Changes do not affect original object."
+                        ],
+                        [
+                            "Memory Usage",
+                            "Consumes less memory.",
+                            "Consumes more memory."
+                        ],
+                        [
+                            "Method",
+                            "Uses copy() or slicing.",
+                            "Uses <b>deepcopy()</b> from copy module."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Difference Between List and Dictionary",
+                    headings: ["Basis", "List", "Dictionary"],
+                    differences: [
+                        [
+                            "Data Structure",
+                            "Stores elements as <b>ordered sequence</b>.",
+                            "Stores data as <b>key–value pairs</b>."
+                        ],
+                        [
+                            "Access Method",
+                            "Accessed using <b>index number</b>.",
+                            "Accessed using <b>unique key</b>."
+                        ],
+                        [
+                            "Syntax",
+                            "Defined using <b>square brackets [ ]</b>.",
+                            "Defined using <b>curly braces { }</b>."
+                        ],
+                        [
+                            "Uniqueness",
+                            "Duplicate elements allowed.",
+                            "Keys must be <b>unique</b>."
+                        ],
+                        [
+                            "Use Case",
+                            "Used for ordered collection of items.",
+                            "Used for associative data storage."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Tuple and Dictionary",
+                    headings: ["Basis", "Tuple", "Dictionary"],
+                    differences: [
+                        [
+                            "Data Type",
+                            "Sequence data type.",
+                            "Mapping data type."
+                        ],
+                        [
+                            "Structure",
+                            "Stores elements in <b>ordered form</b>.",
+                            "Stores <b>key–value pairs</b>."
+                        ],
+                        [
+                            "Mutability",
+                            "<b>Immutable</b>.",
+                            "<b>Mutable</b>."
+                        ],
+                        [
+                            "Access",
+                            "Accessed using index.",
+                            "Accessed using key."
+                        ],
+                        [
+                            "Syntax",
+                            "Defined using parentheses ( ).",
+                            "Defined using curly braces { }."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Ordered and Unordered Data Types",
+                    headings: ["Basis", "Ordered Data Type", "Unordered Data Type"],
+                    differences: [
+                        [
+                            "Arrangement",
+                            "Maintains <b>insertion order</b>.",
+                            "Does not maintain fixed order."
+                        ],
+                        [
+                            "Indexing",
+                            "Supports <b>index-based access</b>.",
+                            "Does not support indexing."
+                        ],
+                        [
+                            "Examples",
+                            "List, Tuple, String.",
+                            "Set."
+                        ],
+                        [
+                            "Iteration",
+                            "Elements retrieved in defined sequence.",
+                            "Elements retrieved in arbitrary order."
+                        ],
+                        [
+                            "Use Case",
+                            "Used when sequence matters.",
+                            "Used when order is not important."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Sequence and Mapping Data Type",
+                    headings: ["Basis", "Sequence Data Type", "Mapping Data Type"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Stores elements in <b>linear ordered form</b>.",
+                            "Stores data as <b>key–value association</b>."
+                        ],
+                        [
+                            "Access Method",
+                            "Accessed using index position.",
+                            "Accessed using unique key."
+                        ],
+                        [
+                            "Examples",
+                            "List, Tuple, String.",
+                            "Dictionary."
+                        ],
+                        [
+                            "Uniqueness",
+                            "Elements may be duplicate.",
+                            "Keys must be unique."
+                        ],
+                        [
+                            "Usage",
+                            "Suitable for ordered collections.",
+                            "Suitable for lookup operations."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Difference Between Unary Operator and Binary Operator",
+                    headings: ["Basis", "Unary Operator", "Binary Operator"],
+                    differences: [
+                        [
+                            "Operand Requirement",
+                            "Operates on <b>single operand</b>.",
+                            "Operates on <b>two operands</b>."
+                        ],
+                        [
+                            "Operation Type",
+                            "Performs operation on one value.",
+                            "Performs operation between two values."
+                        ],
+                        [
+                            "Examples",
+                            "<b>+, -, not</b>.",
+                            "<b>+, -, *, /, ==</b>."
+                        ],
+                        [
+                            "Usage",
+                            "Used for sign change or logical negation.",
+                            "Used for arithmetic or relational operations."
+                        ],
+                        [
+                            "Expression Form",
+                            "Operator placed before operand.",
+                            "Operator placed between operands."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Floor Division (//) and True Division (/)",
+                    headings: ["Basis", "Floor Division (//)", "True Division (/)"],
+                    differences: [
+                        [
+                            "Result Type",
+                            "Returns <b>integer quotient</b>.",
+                            "Returns <b>floating-point result</b>."
+                        ],
+                        [
+                            "Decimal Handling",
+                            "Removes fractional part.",
+                            "Preserves fractional part."
+                        ],
+                        [
+                            "Rounding Rule",
+                            "Rounds toward <b>negative infinity</b>.",
+                            "No rounding applied."
+                        ],
+                        [
+                            "Output Example",
+                            "7 // 2 = 3.",
+                            "7 / 2 = 3.5."
+                        ],
+                        [
+                            "Usage",
+                            "Used in discrete calculations.",
+                            "Used in precise arithmetic calculations."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Assignment and Comparison Operator",
+                    headings: ["Basis", "Assignment Operator", "Comparison Operator"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Assigns <b>value to variable</b>.",
+                            "Compares two values."
+                        ],
+                        [
+                            "Symbol",
+                            "<b>=</b>.",
+                            "<b>==, !=, >, <</b>."
+                        ],
+                        [
+                            "Result",
+                            "Stores value in memory.",
+                            "Returns <b>Boolean value</b>."
+                        ],
+                        [
+                            "Usage Context",
+                            "Used in variable declaration.",
+                            "Used in conditional statements."
+                        ],
+                        [
+                            "Example",
+                            "x = 10.",
+                            "x == 10."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Identity and Equality Operator",
+                    headings: ["Basis", "Identity Operator", "Equality Operator"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Checks <b>memory location</b>.",
+                            "Checks <b>value equivalence</b>."
+                        ],
+                        [
+                            "Operators",
+                            "<b>is, is not</b>.",
+                            "<b>==, !=</b>."
+                        ],
+                        [
+                            "Comparison Basis",
+                            "Compares object identity.",
+                            "Compares object content."
+                        ],
+                        [
+                            "Return Type",
+                            "Returns Boolean.",
+                            "Returns Boolean."
+                        ],
+                        [
+                            "Use Case",
+                            "Used for object reference comparison.",
+                            "Used for value comparison."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Membership and Identity Operator",
+                    headings: ["Basis", "Membership Operator", "Identity Operator"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Checks <b>element presence</b> in sequence.",
+                            "Checks <b>object reference</b>."
+                        ],
+                        [
+                            "Operators",
+                            "<b>in, not in</b>.",
+                            "<b>is, is not</b>."
+                        ],
+                        [
+                            "Application",
+                            "Used with list, tuple, string, set.",
+                            "Used with objects and variables."
+                        ],
+                        [
+                            "Comparison Type",
+                            "Value-based containment check.",
+                            "Memory address comparison."
+                        ],
+                        [
+                            "Example",
+                            "'a' in 'apple'.",
+                            "a is b."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Simple and Augmented Assignment",
+                    headings: ["Basis", "Simple Assignment", "Augmented Assignment"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Assigns value using <b>=</b> operator.",
+                            "Combines operation with assignment."
+                        ],
+                        [
+                            "Operators",
+                            "<b>=</b>.",
+                            "<b>+=, -=, *=, /=</b>."
+                        ],
+                        [
+                            "Expression Length",
+                            "Longer expression required.",
+                            "More concise expression."
+                        ],
+                        [
+                            "Execution",
+                            "Performs assignment only.",
+                            "Performs operation and assignment together."
+                        ],
+                        [
+                            "Example",
+                            "x = x + 5.",
+                            "x += 5."
+                        ]
+                    ]
+                }
+                ,
+                {
+                    questionName: "Difference Between Exception and Error",
+                    headings: ["Basis", "Exception", "Error"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Abnormal event that occurs during <b>program execution</b>.",
+                            "Serious issue in <b>syntax or logic</b>."
+                        ],
+                        [
+                            "Handling",
+                            "Can be handled using <b>try–except</b> block.",
+                            "Generally cannot be handled programmatically."
+                        ],
+                        [
+                            "Occurrence",
+                            "Occurs at runtime.",
+                            "May occur at compile time or runtime."
+                        ],
+                        [
+                            "Impact",
+                            "Program may continue after handling.",
+                            "May terminate program execution."
+                        ],
+                        [
+                            "Example",
+                            "Division by zero exception.",
+                            "Syntax error."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Sequential Flow, Conditional Flow and Iterative Flow",
+                    headings: ["Basis", "Sequential Flow", "Conditional Flow", "Iterative Flow"],
+                    differences: [
+                        [
+                            "Execution Pattern",
+                            "Statements executed in <b>linear order</b>.",
+                            "Execution depends on <b>Boolean condition</b>.",
+                            "Statements executed <b>repeatedly</b>."
+                        ],
+                        [
+                            "Decision Making",
+                            "No decision involved.",
+                            "Uses <b>IF/ELSE</b> structure.",
+                            "Uses loop condition."
+                        ],
+                        [
+                            "Repetition",
+                            "No repetition.",
+                            "Single path selected.",
+                            "Repeats until condition becomes false."
+                        ],
+                        [
+                            "Control Structure",
+                            "Default program flow.",
+                            "Selection control structure.",
+                            "Loop control structure."
+                        ],
+                        [
+                            "Example",
+                            "Input → Process → Output.",
+                            "IF marks > 40.",
+                            "FOR / WHILE loop."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Selection Statement and Looping Statement",
+                    headings: ["Basis", "Selection Statement", "Looping Statement"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Selects one path among alternatives.",
+                            "Repeats a block of code."
+                        ],
+                        [
+                            "Control Type",
+                            "<b>Decision-based control</b>.",
+                            "<b>Repetition-based control</b>."
+                        ],
+                        [
+                            "Keywords",
+                            "IF, ELSE, ELIF.",
+                            "FOR, WHILE."
+                        ],
+                        [
+                            "Execution Count",
+                            "Executes once based on condition.",
+                            "Executes multiple times."
+                        ],
+                        [
+                            "Use Case",
+                            "Used for branching logic.",
+                            "Used for iterative processing."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Entry-Controlled Loop and Exit-Controlled Loop",
+                    headings: ["Basis", "Entry-Controlled Loop", "Exit-Controlled Loop"],
+                    differences: [
+                        [
+                            "Condition Check",
+                            "Condition checked before loop body.",
+                            "Condition checked after loop body."
+                        ],
+                        [
+                            "Minimum Execution",
+                            "May execute zero times.",
+                            "Executes at least once."
+                        ],
+                        [
+                            "Examples",
+                            "FOR, WHILE.",
+                            "do-while."
+                        ],
+                        [
+                            "Control Flow",
+                            "Pre-test loop.",
+                            "Post-test loop."
+                        ],
+                        [
+                            "Use Case",
+                            "Used when validation needed before execution.",
+                            "Used when execution required before checking."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between break and continue Statement",
+                    headings: ["Basis", "break Statement", "continue Statement"],
+                    differences: [
+                        [
+                            "Function",
+                            "Terminates the loop immediately.",
+                            "Skips current iteration."
+                        ],
+                        [
+                            "Control Transfer",
+                            "Transfers control outside loop.",
+                            "Transfers control to next iteration."
+                        ],
+                        [
+                            "Effect on Loop",
+                            "Loop stops completely.",
+                            "Loop continues execution."
+                        ],
+                        [
+                            "Usage",
+                            "Used to exit loop early.",
+                            "Used to skip specific condition."
+                        ],
+                        [
+                            "Example",
+                            "Stops loop when condition met.",
+                            "Skips even numbers."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Conditional Statement and Iterative Statement",
+                    headings: ["Basis", "Conditional Statement", "Iterative Statement"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Performs decision making.",
+                            "Performs repetition."
+                        ],
+                        [
+                            "Execution",
+                            "Executes one block among alternatives.",
+                            "Executes block multiple times."
+                        ],
+                        [
+                            "Keywords",
+                            "IF, ELSE.",
+                            "FOR, WHILE."
+                        ],
+                        [
+                            "Control Type",
+                            "Selection control structure.",
+                            "Loop control structure."
+                        ],
+                        [
+                            "Result",
+                            "Chooses path.",
+                            "Repeats process."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between range() in for Loop and Condition in while Loop",
+                    headings: ["Basis", "range() in for Loop", "Condition in while Loop"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Generates <b>sequence of numbers</b>.",
+                            "Evaluates <b>Boolean expression</b>."
+                        ],
+                        [
+                            "Control Type",
+                            "Counter-controlled loop.",
+                            "Condition-controlled loop."
+                        ],
+                        [
+                            "Iteration Count",
+                            "Usually fixed or predefined.",
+                            "Depends on logical condition."
+                        ],
+                        [
+                            "Syntax",
+                            "for i in range(start, stop, step).",
+                            "while condition:."
+                        ],
+                        [
+                            "Usage",
+                            "Used for definite iteration.",
+                            "Used for indefinite iteration."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Iteration and Recursion",
+                    headings: ["Basis", "Iteration", "Recursion"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Repeats statements using loops.",
+                            "Function calls itself."
+                        ],
+                        [
+                            "Control Mechanism",
+                            "Uses FOR or WHILE.",
+                            "Uses recursive function."
+                        ],
+                        [
+                            "Termination",
+                            "Ends when loop condition fails.",
+                            "Ends when base condition satisfied."
+                        ],
+                        [
+                            "Memory Usage",
+                            "Consumes less memory.",
+                            "Uses call stack memory."
+                        ],
+                        [
+                            "Performance",
+                            "Generally faster.",
+                            "Slower due to function call overhead."
+                        ]
+                    ]
+                },
+                {
+                    questionName: "Difference Between String, List, Tuple, Dictionary and Set",
+                    headings: ["Basis", "String", "List", "Tuple", "Dictionary", "Set"],
+                    differences: [
+                        [
+                            "Data Type",
+                            "Sequence of <b>characters</b>.",
+                            "Ordered collection of elements.",
+                            "Ordered collection of elements.",
+                            "Mapping of <b>key–value pairs</b>.",
+                            "Unordered collection of <b>unique elements</b>."
+                        ],
+                        [
+                            "Mutability",
+                            "<b>Immutable</b>.",
+                            "Mutable.",
+                            "Immutable.",
+                            "Mutable.",
+                            "Mutable."
+                        ],
+                        [
+                            "Syntax",
+                            "Defined using quotes.",
+                            "Defined using [ ].",
+                            "Defined using ( ).",
+                            "Defined using {key:value}.",
+                            "Defined using { }."
+                        ],
+                        [
+                            "Indexing Support",
+                            "Supports indexing.",
+                            "Supports indexing.",
+                            "Supports indexing.",
+                            "Accessed using key.",
+                            "Does not support indexing."
+                        ],
+                        [
+                            "Duplicate Elements",
+                            "Allowed.",
+                            "Allowed.",
+                            "Allowed.",
+                            "Keys must be unique.",
+                            "Duplicates not allowed."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Mutable and Immutable Data Types",
+                    headings: ["Basis", "Mutable Data Type", "Immutable Data Type"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Value can be <b>modified after creation</b>.",
+                            "Value cannot be modified after creation."
+                        ],
+                        [
+                            "Memory Handling",
+                            "Changes occur in same memory location.",
+                            "New memory location created on modification."
+                        ],
+                        [
+                            "Examples",
+                            "List, Dictionary, Set.",
+                            "String, Tuple, Integer."
+                        ],
+                        [
+                            "Performance",
+                            "Requires dynamic memory handling.",
+                            "More memory efficient."
+                        ],
+                        [
+                            "Data Safety",
+                            "Less secure due to changeability.",
+                            "More secure due to fixed value."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Positive Indexing and Negative Indexing",
+                    headings: ["Basis", "Positive Indexing", "Negative Indexing"],
+                    differences: [
+                        [
+                            "Counting Direction",
+                            "Counts from <b>left to right</b>.",
+                            "Counts from <b>right to left</b>."
+                        ],
+                        [
+                            "Starting Index",
+                            "Starts from 0.",
+                            "Starts from -1."
+                        ],
+                        [
+                            "Position Reference",
+                            "0 refers to first element.",
+                            "-1 refers to last element."
+                        ],
+                        [
+                            "Usage",
+                            "Used for forward traversal.",
+                            "Used for reverse access."
+                        ],
+                        [
+                            "Example",
+                            "a[0].",
+                            "a[-1]."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Membership Operator (in) and find()",
+                    headings: ["Basis", "Membership Operator (in)", "find() Method"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Checks <b>presence of element</b>.",
+                            "Returns <b>position of substring</b>."
+                        ],
+                        [
+                            "Return Type",
+                            "Returns Boolean value.",
+                            "Returns index or -1."
+                        ],
+                        [
+                            "Applicable To",
+                            "Works with sequence types.",
+                            "Applicable to string only."
+                        ],
+                        [
+                            "Error Handling",
+                            "No error if not found.",
+                            "Returns -1 if not found."
+                        ],
+                        [
+                            "Example",
+                            "'a' in 'apple'.",
+                            "'a'.find('p')."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between split() and partition()",
+                    headings: ["Basis", "split()", "partition()"],
+                    differences: [
+                        [
+                            "Function",
+                            "Divides string into <b>list of substrings</b>.",
+                            "Divides string into <b>three parts</b>."
+                        ],
+                        [
+                            "Return Type",
+                            "Returns list.",
+                            "Returns tuple."
+                        ],
+                        [
+                            "Separator Handling",
+                            "Removes separator.",
+                            "Keeps separator in result."
+                        ],
+                        [
+                            "Number of Splits",
+                            "Can split multiple times.",
+                            "Splits at first occurrence only."
+                        ],
+                        [
+                            "Use Case",
+                            "Used for tokenization.",
+                            "Used for structured splitting."
+                        ]
+                    ]
+                }
+                ,
+                {
+                    questionName: "Difference Between Single-Dimensional List and Nested List",
+                    headings: ["Basis", "Single-Dimensional List", "Nested List"],
+                    differences: [
+                        [
+                            "Structure",
+                            "Contains <b>individual elements</b> in single level.",
+                            "Contains <b>list inside another list</b>."
+                        ],
+                        [
+                            "Dimension",
+                            "One-dimensional structure.",
+                            "Multi-dimensional structure."
+                        ],
+                        [
+                            "Access Method",
+                            "Accessed using single index.",
+                            "Accessed using <b>multiple indices</b>."
+                        ],
+                        [
+                            "Complexity",
+                            "Simple data representation.",
+                            "Represents matrix or tabular data."
+                        ],
+                        [
+                            "Example",
+                            "[1, 2, 3].",
+                            "[[1,2],[3,4]]."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between remove(), pop() and del Statement",
+                    headings: ["Basis", "remove()", "pop()", "del Statement"],
+                    differences: [
+                        [
+                            "Removal Basis",
+                            "Removes element by <b>value</b>.",
+                            "Removes element by <b>index</b>.",
+                            "Deletes element using index or entire object."
+                        ],
+                        [
+                            "Return Value",
+                            "Returns None.",
+                            "Returns removed element.",
+                            "Does not return value."
+                        ],
+                        [
+                            "Default Behavior",
+                            "Removes first matching value.",
+                            "Removes last element if no index given.",
+                            "Can delete variable completely."
+                        ],
+                        [
+                            "Error Condition",
+                            "Raises error if value not found.",
+                            "Raises error for invalid index.",
+                            "Raises error for invalid reference."
+                        ],
+                        [
+                            "Usage",
+                            "Used for value-based deletion.",
+                            "Used when element value needed after removal.",
+                            "Used for memory deallocation."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between sort() and sorted()",
+                    headings: ["Basis", "sort()", "sorted()"],
+                    differences: [
+                        [
+                            "Operation Type",
+                            "Sorts list <b>in-place</b>.",
+                            "Returns <b>new sorted list</b>."
+                        ],
+                        [
+                            "Applicable To",
+                            "Applicable to list only.",
+                            "Applicable to any iterable."
+                        ],
+                        [
+                            "Return Value",
+                            "Returns None.",
+                            "Returns sorted list."
+                        ],
+                        [
+                            "Original Data",
+                            "Modifies original list.",
+                            "Does not modify original data."
+                        ],
+                        [
+                            "Memory Usage",
+                            "Memory efficient.",
+                            "Consumes additional memory."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Linear Search and Binary Search",
+                    headings: ["Basis", "Linear Search", "Binary Search"],
+                    differences: [
+                        [
+                            "Searching Technique",
+                            "Sequential comparison of elements.",
+                            "Divides data into halves."
+                        ],
+                        [
+                            "Data Requirement",
+                            "Works on unsorted data.",
+                            "Requires <b>sorted data</b>."
+                        ],
+                        [
+                            "Time Complexity",
+                            "O(n).",
+                            "O(log n)."
+                        ],
+                        [
+                            "Efficiency",
+                            "Less efficient for large dataset.",
+                            "Highly efficient for large dataset."
+                        ],
+                        [
+                            "Approach",
+                            "Simple iterative method.",
+                            "Uses <b>divide-and-conquer</b> technique."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Tuple Packing and Tuple Unpacking",
+                    headings: ["Basis", "Tuple Packing", "Tuple Unpacking"],
+                    differences: [
+                        [
+                            "Definition",
+                            "Combining multiple values into a <b>single tuple</b>.",
+                            "Assigning tuple elements to <b>multiple variables</b>."
+                        ],
+                        [
+                            "Syntax",
+                            "a = 1, 2, 3.",
+                            "a, b, c = (1, 2, 3)."
+                        ],
+                        [
+                            "Purpose",
+                            "Creates tuple object.",
+                            "Extracts individual elements."
+                        ],
+                        [
+                            "Variable Requirement",
+                            "Single variable used.",
+                            "Number of variables must match elements."
+                        ],
+                        [
+                            "Use Case",
+                            "Used to group related data.",
+                            "Used for parallel assignment."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Tuple Assignment and Normal Assignment",
+                    headings: ["Basis", "Tuple Assignment", "Normal Assignment"],
+                    differences: [
+                        [
+                            "Assignment Type",
+                            "Multiple variables assigned simultaneously.",
+                            "Single variable assigned at a time."
+                        ],
+                        [
+                            "Syntax",
+                            "a, b = 5, 10.",
+                            "a = 5; b = 10."
+                        ],
+                        [
+                            "Execution",
+                            "Performs <b>parallel assignment</b>.",
+                            "Performs sequential assignment."
+                        ],
+                        [
+                            "Swapping Values",
+                            "Allows direct swapping: a, b = b, a.",
+                            "Requires temporary variable."
+                        ],
+                        [
+                            "Efficiency",
+                            "More concise and efficient.",
+                            "More verbose."
+                        ]
+                    ]
+                },
+
+                {
+                    questionName: "Difference Between Tuple Traversal and Tuple Indexing",
+                    headings: ["Basis", "Tuple Traversal", "Tuple Indexing"],
+                    differences: [
+                        [
+                            "Purpose",
+                            "Accesses elements <b>one by one</b>.",
+                            "Accesses specific element."
+                        ],
+                        [
+                            "Method",
+                            "Uses <b>for loop</b>.",
+                            "Uses index position."
+                        ],
+                        [
+                            "Control",
+                            "Iterative access.",
+                            "Direct access."
+                        ],
+                        [
+                            "Use Case",
+                            "Used to process all elements.",
+                            "Used to retrieve single element."
+                        ],
+                        [
+                            "Example",
+                            "for i in t.",
+                            "t[0]."
+                        ]
+                    ]
+                }
+            ]
 
 
 
-];
 
-// =====================
-// RENDER FUNCTION
-// =====================
 
-function renderQuestions() {
-    const container = document.getElementById("content");
 
-    questions.forEach(q => {
 
-        const questionDiv = document.createElement("div");
-        questionDiv.className = "question-container";
 
-        const title = document.createElement("div");
-        title.className = "question-title";
-        title.textContent = q.questionName;
 
-        const table = document.createElement("table");
 
-        const thead = document.createElement("thead");
-        const headerRow = document.createElement("tr");
 
-        q.headings.forEach(head => {
-            const th = document.createElement("th");
-            th.textContent = head;
-            headerRow.appendChild(th);
-        });
 
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
 
-        const tbody = document.createElement("tbody");
 
-        q.differences.forEach(row => {
-            const tr = document.createElement("tr");
 
-            row.forEach(cell => {
-                const td = document.createElement("td");
-                td.innerHTML = cell;
-                tr.appendChild(td);
+
+        // =====================
+        // RENDER FUNCTION
+        // =====================
+
+        function renderQuestions() {
+            const container = document.getElementById("content");
+
+            questions.forEach((q, ind) => {
+
+                const questionDiv = document.createElement("div");
+                questionDiv.className = "question-container";
+
+                const title = document.createElement("div");
+                title.className = "question-title";
+                title.textContent = `${ind + 1}. ${q.questionName}`;
+
+                const table = document.createElement("table");
+
+                const thead = document.createElement("thead");
+                const headerRow = document.createElement("tr");
+
+                q.headings.forEach(head => {
+                    const th = document.createElement("th");
+                    th.textContent = head;
+                    headerRow.appendChild(th);
+                });
+
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                const tbody = document.createElement("tbody");
+
+                q.differences.forEach(row => {
+                    const tr = document.createElement("tr");
+
+                    row.forEach(cell => {
+                        const td = document.createElement("td");
+                        td.innerHTML = cell;
+                        tr.appendChild(td);
+                    });
+
+                    tbody.appendChild(tr);
+                });
+
+                table.appendChild(tbody);
+
+                questionDiv.appendChild(title);
+                questionDiv.appendChild(table);
+                container.appendChild(questionDiv);
+
             });
+        }
 
-            tbody.appendChild(tr);
-        });
+        renderQuestions();
 
-        table.appendChild(tbody);
-
-        questionDiv.appendChild(title);
-        questionDiv.appendChild(table);
-        container.appendChild(questionDiv);
-
-    });
-}
-
-renderQuestions();
-
-</script>
+    </script>
 
 </body>
+
 </html>
