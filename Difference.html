@@ -1,1 +1,246 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Difference Study Table</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        background-color: #f4f7fb;
+        margin: 0;
+        padding: 40px;
+        color: #2c3e50;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #1a237e;
+    }
+
+    .print-btn-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .print-btn {
+        background-color: #1976d2;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .print-btn:hover {
+        background-color: #0d47a1;
+    }
+
+    .question-container {
+        margin-bottom: 50px;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        page-break-inside: avoid;
+    }
+
+    .question-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #0d47a1;
+        border-left: 6px solid #1976d2;
+        padding-left: 12px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+    }
+
+    thead {
+        background-color: #e3f2fd;
+    }
+
+    th {
+        padding: 14px;
+        text-align: left;
+        font-weight: 700;
+        border-bottom: 2px solid #90caf9;
+        color: #0d47a1;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    tr:hover {
+        background-color: #f1f8ff;
+    }
+
+
+    /* ===================== */
+    /* PRINT STYLING */
+    /* ===================== */
+
+    @media print {
+
+        body {
+            background: white;
+            padding: 10px;
+        }
+
+        .print-btn-container {
+            display: none;
+        }
+
+        .question-container {
+            box-shadow: none;
+            border: 1px solid #ccc;
+            page-break-inside: avoid;
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+    }
+
+</style>
+</head>
+
+<body>
+
+<h1>Difference Based Study Tables</h1>
+
+<div class="print-btn-container">
+    <button class="print-btn" onclick="printPage()">Print / Save as PDF</button>
+</div>
+
+<div id="content"></div>
+
+<script>
+
+// =====================
+// PRINT FUNCTION
+// =====================
+
+function printPage() {
+    window.print();
+}
+
+// =====================
+// DATA STRUCTURE
+// =====================
+
+const questions = [
+    {
+        questionName: "Difference Between Demand and Supply",
+        headings: ["Basis", "Demand", "Supply"],
+        differences: [
+            ["Meaning", "Quantity of goods consumers are willing to buy.", "Quantity of goods producers are willing to sell."],
+            ["Relationship with Price", "Inverse relationship.", "Direct relationship."],
+            ["Determinants", "Income, taste, price of related goods.", "Cost of production, technology, taxes."],
+            ["Curve Slope", "Downward sloping.", "Upward sloping."]
+        ]
+    },
+    {
+    questionName: "Difference Between Demand and Supply",
+    headings: ["Basis", "Demand", "Supply"],
+    differences: [
+        [
+            "Meaning",
+            "Quantity consumers are <b>willing to buy</b> at a given price.",
+            "Quantity producers are <b>willing to sell</b> at a given price."
+        ],
+        [
+            "Price Relation",
+            "<b>Inverse relationship</b> with price.",
+            "<b>Direct relationship</b> with price."
+        ]
+    ]
+}
+
+];
+
+// =====================
+// RENDER FUNCTION
+// =====================
+
+function renderQuestions() {
+    const container = document.getElementById("content");
+
+    questions.forEach(q => {
+
+        const questionDiv = document.createElement("div");
+        questionDiv.className = "question-container";
+
+        const title = document.createElement("div");
+        title.className = "question-title";
+        title.textContent = q.questionName;
+
+        const table = document.createElement("table");
+
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+
+        q.headings.forEach(head => {
+            const th = document.createElement("th");
+            th.textContent = head;
+            headerRow.appendChild(th);
+        });
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement("tbody");
+
+        q.differences.forEach(row => {
+            const tr = document.createElement("tr");
+
+            row.forEach(cell => {
+                const td = document.createElement("td");
+                td.innerHTML = cell;
+                tr.appendChild(td);
+            });
+
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+
+        questionDiv.appendChild(title);
+        questionDiv.appendChild(table);
+        container.appendChild(questionDiv);
+
+    });
+}
+
+renderQuestions();
+
+</script>
+
+</body>
+</html>
