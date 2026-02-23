@@ -76,7 +76,7 @@
             padding: 14px;
             text-align: left;
             font-weight: 700;
-            border-bottom: 2px solid #90caf9;
+            border-bottom: 2px solid hsl(207, 90%, 77%);
             color: #0d47a1;
         }
 
@@ -89,6 +89,39 @@
 
         tr:hover {
             background-color: #f1f8ff;
+        }
+
+        .notes-dropdown {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border: 2px solid hsl(207, 90%, 77%);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .notes-dropdown summary {
+            font-weight: 700;
+            color: #0d47a1;
+            font-size: 16px;
+            padding: 5px;
+            list-style: none;
+            user-select: none;
+        }
+
+        .notes-dropdown summary:hover {
+            color: #1976d2;
+        }
+
+        .notes-dropdown ul {
+            margin: 15px 0 0 0;
+            padding-left: 25px;
+        }
+
+        .notes-dropdown li {
+            margin: 8px 0;
+            line-height: 1.6;
+            color: #424242;
         }
 
 
@@ -186,6 +219,7 @@
                             "<b>Operating system, compiler, application software</b>."
                         ]
                     ]
+
                 },
 
                 {
@@ -195,22 +229,27 @@
                         [
                             "Definition",
                             "<b>Main memory</b> directly accessed by CPU.",
-                            "<b>Auxiliary storage</b> used for permanent data storage."
+                            "Not directly accessible; data must be moved to RAM first."
                         ],
                         [
                             "Volatility",
-                            "Mostly <b>volatile</b> in nature.",
+                            "Generally <b>volatile</b> (RAM), though ROM is <b>non-volatile</b>.",
                             "Generally <b>non-volatile</b>."
                         ],
                         [
                             "CPU Access",
-                            "Accessed through <b>memory bus</b>.",
-                            "Accessed via <b>I/O operations</b>."
+                            "Extremely fast; minimal <b>latency</b>. Accessed through <b>memory bus</b>.",
+                            " Much slower access speeds. Accessed via <b>I/O operations</b>."
                         ],
                         [
                             "Storage Capacity",
-                            "<b>Limited capacity</b>.",
-                            "<b>Large storage capacity</b>."
+                            "<b>Limited capacity (typically 8GB–32GB).</b>.",
+                            "<b>Large storage capacity (typically 512GB–10TB+).</b>."
+                        ],
+                        [
+                            "Cost",
+                            "High cost per unit of storage.",
+                            "Low cost per unit of storage."
                         ],
                         [
                             "Examples",
@@ -494,20 +533,29 @@
                             "Operates at <b>user level</b>."
                         ],
                         [
-                            "Dependency",
-                            "Provides <b>platform for application programs</b>.",
-                            "Runs on <b>system software environment</b>."
+                            "Independence",
+                            "Can run <b>independently of application software</b>.",
+                            " Cannot run without an <b>Operating System</b>."
                         ],
                         [
                             "Execution",
-                            "Starts during <b>system boot process</b>.",
-                            "Executed on <b>user demand</b>."
+                            "Starts automatically during <b>system boot process</b>.",
+                            "Starts only when the <b>user invokes it</b>."
+                        ],
+                        [
+                            "Execution",
+                            "Written in <b>low-level or mid-level languages (C, C++).</b>",
+                            "Mostly written in <b>high-level languages (Python, JavaScript).</b>"
                         ],
                         [
                             "Examples",
                             "<b>Operating system, device drivers, compiler</b>.",
                             "<b>Word processor, browser, accounting software</b>."
                         ]
+                    ],
+                    notes: [
+                        "1. You wrote that Application Software 'gives command to operate hardware.' This is technically incorrect. Application Software gives commands to the System Software, which then manages the hardware.",
+                        "2. Missing 'Dependency' point: You should explicitly state that System Software can run independently, but Application Software cannot run without an Operating System."
                     ]
                 },
 
@@ -2026,6 +2074,12 @@
                             "Uses >>> prompt.",
                             "No interactive prompt used."
                         ]
+                    ],
+                    notes: [
+                        "Concept was clear but ambiguous.",
+                        "Execution Nuance: In Interactive mode, code is not just 'line-by-line,' it is immediate. Once you hit Enter, the result is returned. In Script mode, the code is still executed line-by-line by the interpreter, but the results aren't shown until the program reaches a print() statement or ends.",
+                        "Reusability: You missed the most critical difference: Persistence. Interactive mode code is lost once the session ends, while Script mode code is saved in a file for future use.",
+                        "Grammar: You wrote 'One liner program'. While technically correct, 'Small snippets or single lines' sounds more professional.",
                     ]
                 },
 
@@ -7070,42 +7124,7 @@
                         ]
                     ]
                 },
- {
-        questionName: "Difference Between VoIP and GSM",
-        headings: ["Basis", "VoIP", "GSM"],
-        differences: [
-          [
-            "Definition",
-            "<b>VoIP</b> transmits voice data over the <b>Internet using IP networks</b>.",
-            "<b>GSM</b> is a <b>cellular network standard</b> used for mobile voice and data communication."
-          ],
-          [
-            "Transmission Medium",
-            "VoIP uses <b>Internet Protocol (IP)</b> over broadband connection.",
-            "GSM uses <b>radio waves and cellular towers</b> for communication."
-          ],
-          [
-            "Cost",
-            "VoIP is generally <b>low cost or free</b> (uses internet data).",
-            "GSM requires <b>SIM card and telecom service charges</b>."
-          ],
-          [
-            "Network Requirement",
-            "VoIP requires <b>stable internet connection</b>.",
-            "GSM requires <b>cellular network coverage</b>."
-          ],
-          [
-            "Call Quality",
-            "VoIP call quality depends on <b>internet speed and bandwidth</b>.",
-            "GSM call quality depends on <b>signal strength and network coverage</b>."
-          ],
-          [
-            "Examples",
-            "VoIP examples: <b>Skype, WhatsApp Call, Zoom</b>.",
-            "GSM examples: <b>Regular mobile calls using SIM card</b>."
-          ]
-        ]
-      },
+
                 {
                     questionName: "Difference Between GSM and GPRS",
                     headings: ["Basis", "GSM", "GPRS"],
@@ -10602,6 +10621,28 @@
 
                 questionDiv.appendChild(title);
                 questionDiv.appendChild(table);
+
+                // Add notes dropdown if notes exist and have items
+                if (q.notes && q.notes.length > 0) {
+                    const notesDetails = document.createElement("details");
+                    notesDetails.className = "notes-dropdown";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "📘 Exam Notes";
+                    notesDetails.appendChild(summary);
+
+                    const ul = document.createElement("ul");
+
+                    q.notes.forEach(note => {
+                        const li = document.createElement("li");
+                        li.textContent = note;
+                        ul.appendChild(li);
+                    });
+
+                    notesDetails.appendChild(ul);
+                    questionDiv.appendChild(notesDetails);
+                }
+
                 container.appendChild(questionDiv);
 
             });
